@@ -54,7 +54,7 @@ def rec(x, i):
     a, b, c, d = x
     a = int((a - 68 * i) / (1 - i))
     b = int((b - 68 * i) / (1 - i))
-    c = int((c - 68 * i) / (1 - i))
+    c = int((c - 64 * i) / (1 - i))
     return (a, b, c, 255)
 
 
