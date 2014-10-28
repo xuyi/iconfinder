@@ -1,0 +1,1 @@
+remove watermark from iconfinder png 
