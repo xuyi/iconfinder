@@ -45,8 +45,8 @@ raw_data = {
 
 
 def transparent(point):
-    if point[3] != 255 and (64 < point[0] < 72) and (64 < point[1] < 72) \
-            and (60 < point[2] < 68):
+    if point[3] != 255 and (66 < point[0] < 70) and (66 < point[1] < 70) \
+            and (62 < point[2] < 66):
         return True
     return False
 
