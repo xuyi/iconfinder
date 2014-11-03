@@ -45,7 +45,8 @@ raw_data = {
 
 
 def transparent(point):
-    if point[3] != 255:
+    if point[3] != 255 and (64 < point[0] < 72) and (64 < point[1] < 72) \
+            and (60 < point[2] < 68):
         return True
     return False
 
@@ -55,14 +56,13 @@ def rec(x, i):
     a = int((a - 68 * i) / (1 - i))
     b = int((b - 68 * i) / (1 - i))
     c = int((c - 64 * i) / (1 - i))
-    return (a, b, c, 255)
+    return (a, b, c, d)
 
 
 def unmark(filename):
     im = Image.open(filename)
     im = im.convert("RGBA")
     kk = im.load()
-
     func = raw_data.get(im.size[0])
     if not func:
         print "NOT SUPPORT SIZE (128, 256, 512)"
@@ -72,6 +72,9 @@ def unmark(filename):
     nodes = func()
 
     for index, node in enumerate(nodes):
+        if node == 0:
+            continue
+
         i = index % im.size[1]
         j = index / im.size[1]
 
@@ -86,6 +89,7 @@ def unmark(filename):
                 kk[i, j] = rec(kk[i, j], 0.073)
 
     new_name = filename.lower().replace(".png", ".new.png")
+
     print "NEW: ", new_name
     im.save(new_name, "PNG")
 
