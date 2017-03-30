@@ -12,7 +12,7 @@ def get_data(height, width, interval, datalen, start):
     packlen = interval + datalen
     raw = raw_line * (int(width / packlen) + 2)
     start = packlen - start
-    for i in xrange(height):
+    for i in range(height):
         if start > packlen:
             start = (start % packlen)
         data.extend(raw[start:start + width])
@@ -65,10 +65,10 @@ def unmark(filename):
     kk = im.load()
     func = raw_data.get(im.size[0])
     if not func:
-        print "NOT SUPPORT SIZE (128, 256, 512)"
+        print ("NOT SUPPORT SIZE (128, 256, 512)")
         sys.exit()
 
-    print "SIZE: ", im.size
+    print ("SIZE: ", im.size)
     nodes = func()
 
     for index, node in enumerate(nodes):
@@ -90,14 +90,14 @@ def unmark(filename):
 
     new_name = filename.lower().replace(".png", ".new.png")
 
-    print "NEW: ", new_name
+    print ("NEW: ", new_name)
     im.save(new_name, "PNG")
 
 
 def show(x, n):
     for i in xrange(n):
         for j in xrange(n):
-            print x[i * n + j],
+            print (x[i * n + j]),
         print
 
 
