@@ -95,8 +95,8 @@ def unmark(filename):
 
 
 def show(x, n):
-    for i in xrange(n):
-        for j in xrange(n):
+    for i in range(n):
+        for j in range(n):
             print (x[i * n + j]),
         print
 
